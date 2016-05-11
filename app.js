@@ -1,6 +1,9 @@
 // use the `require` function, provided by Node.js, to import the Express.js module
-var express = require('express'),
-  app = express();
+var express = require('express');
+
+// use the `express` function, provided by Express.js, to create the `app` object
+// which will be our Express application
+var app = express();
 
 // use the `get` method, provided by Express.js, to handle a GET request to "/"
 app.get("/", function (req, res) {
