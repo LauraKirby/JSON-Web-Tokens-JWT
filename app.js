@@ -1,6 +1,10 @@
-// use the `require` function, provided by Node.js, to import the Express.js module
-var express = require('express'),
-  app = express();
+var mongoose = require ('mongoose');
+var express = require('express');
+var bodyParser = require('body-parser');
+var expressJWT = require('express-JWT');
+var jwt = require('jsonwebtoken');
+
+var app = express();
 
 // use the `get` method, provided by Express.js, to handle a GET request to "/"
 app.get("/", function (req, res) {
