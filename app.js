@@ -3,13 +3,11 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var expressJWT = require('express-JWT');
 var jwt = require('jsonwebtoken');
+var apiRoutes = require('./routers/api');
 
 var app = express();
 
-// use the `get` method, provided by Express.js, to handle a GET request to "/"
-app.get("/", function (req, res) {
-  res.send("Hello Insect World");
-});
+app.use('/', apiRoutes);
 
 // use the `listen` method, provided by Express.js, to start the server
 app.listen(3000, function () {
