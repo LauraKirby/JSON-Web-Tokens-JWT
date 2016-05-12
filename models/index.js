@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/");
+mongoose.connect("mongodb://localhost/insect");
 
 mongoose.set("debug", true);
 
