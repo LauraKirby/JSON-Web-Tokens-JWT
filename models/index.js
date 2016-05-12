@@ -1,6 +1,6 @@
-var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/insect");
+// var mongoose = require("mongoose");
+// mongoose.connect("mongodb://localhost/insect");
 
-mongoose.set("debug", true);
+// mongoose.set("debug", true);
 
-module.exports.User = require("./user");
+// module.exports.User = require("./user");
