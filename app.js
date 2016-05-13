@@ -5,12 +5,14 @@ var expressJWT = require('express-JWT');
 var jwt = require('jsonwebtoken');
 var morgan = require('morgan');
 
+var basicRoutes = require('./routers/basic');
 var apiRoutes = require('./routers/api');
 var config = require('./config');
 
 var app = express();
 
-app.use('/', apiRoutes);
+app.use('/', basicRoutes);
+app.use('/api', apiRoutes);
 
 mongoose.connect(config.database); // connect to database
 app.set('superSecret', config.secret); // secret variable
