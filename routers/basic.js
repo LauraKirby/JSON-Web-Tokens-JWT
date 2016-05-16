@@ -1,6 +1,7 @@
 var express = require ('express');
 var basicRoutes = express.Router();
 var User = require('../models/user');
+var mongoose = require ('mongoose');
 
 // landing page route
 basicRoutes.get("/", function (req, res) {

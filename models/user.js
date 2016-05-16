@@ -1,10 +1,10 @@
-var mongoose = require("mongoose");
+// get an instance of mongoose and mongoose.Schema
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var userSchema = new mongoose.Schema({
-  name: String,
-  password: String,
-  admin: Boolean
-});
-
-var User = mongoose.model("User", userSchema);
-module.exports = User;
+// set up a mongoose model and pass it using module.exports
+module.exports = mongoose.model('User', new Schema({
+    name: String,
+    password: String,
+    admin: Boolean
+}));
