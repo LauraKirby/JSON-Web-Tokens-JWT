@@ -23,8 +23,6 @@ app.set('superSecret', config.secret); // secret variable
 app.use('/', basicRoutes);
 app.use('/api', apiRoutes);
 
-
-
 // use morgan to log requests to the console
 app.use(morgan('dev'));
 
