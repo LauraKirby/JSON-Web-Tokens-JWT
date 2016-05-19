@@ -1,7 +1,7 @@
 var mongoose = require ('mongoose');
 var bodyParser = require('body-parser');
 var express = require('express');
-var expressJWT = require('express-JWT');
+var expressJWT = require('express-jwt');
 var jwt = require('jsonwebtoken');
 var morgan = require('morgan');
 
