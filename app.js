@@ -12,6 +12,7 @@ var apiRoutes = require('./routers/api');
 var app = express();
 
 app.set('superSecret', process.env.SECRET); // secret variable
+app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

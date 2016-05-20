@@ -5,7 +5,7 @@ var mongoose = require ('mongoose');
 
 // landing page route
 basicRoutes.get("/", function (req, res) {
-  res.send("Hello Insect World");
+  res.render("landing");
 });
 
 // "about" route
