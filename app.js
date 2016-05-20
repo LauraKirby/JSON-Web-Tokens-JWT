@@ -11,16 +11,21 @@ var apiRoutes = require('./routers/api');
 
 var app = express();
 
-app.set('superSecret', process.env.SECRET); // secret variable
+// app.use(express.static(__dirname + '/')); // won't need this until i have static files
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.use(express.static(__dirname + '/public'));
+app.use('/', basicRoutes);
+app.use('/api', apiRoutes);
+
+app.set('superSecret', process.env.SECRET); // secret variable
+
+
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev')); // log requests to the console
 
-app.use('/', basicRoutes);
-app.use('/api', apiRoutes);
 
 
 // use the `listen` method, provided by Express.js, to start the server

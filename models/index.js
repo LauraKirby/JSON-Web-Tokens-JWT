@@ -1,6 +1,9 @@
 var mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGOLAB_URI || process.env.DATABASE);
+mongoose.connect(process.env.MONGOLAB_URI || process.env.DATABASE, function(error){
+  if (error) console.error(error);
+  else console.log('mongo connected');
+});
 
 mongoose.set("debug", true);
 
