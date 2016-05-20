@@ -14,8 +14,8 @@ basicRoutes.get("/about", function(req, res) {
 // create and save sample user
 basicRoutes.get('/setup', function(req, res) {
   var newUser = {
-    username: 'Nick Cerminara',
-    password: 'password',
+    username: 'Laura Kirby',
+    password: 'password2',
     admin: true
   };
 
