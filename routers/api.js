@@ -1,22 +1,20 @@
-var mongoose = require ('mongoose');
 var express = require('express');
+var db = require("../models");
 var bodyParser = require('body-parser');
 var expressJWT = require('express-jwt');
 var jwt = require('jsonwebtoken');
 var morgan = require('morgan');
-var config = require('../config');
 
 var apiRoutes = express.Router();
-var User = require('../models/user');
 
 var app = express();
-app.set('superSecret', config.secret); // secret variable
+app.set('superSecret', process.env.SECRET);  // secret variable
 
 // route to authenticate a user (POST http://localhost:3000/api/authenticate)
 apiRoutes.post('/authenticate', function(req, res) {
 
   // find the user
-  User.findOne({
+  db.User.findOne({
     username: req.body.username
   }, function(err, user) {
 
@@ -88,7 +86,7 @@ apiRoutes.get('/', function(req, res) {
 
 // route to return all users (GET http://localhost:3000/api/users)
 apiRoutes.get('/users', function(req, res) {
-  User.find({}, function(err, users) {
+  db.User.find({}, function(err, users) {
     res.json(users);
   });
 });

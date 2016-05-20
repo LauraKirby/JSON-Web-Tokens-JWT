@@ -1,6 +1,6 @@
 var express = require ('express');
 var basicRoutes = express.Router();
-var User = require('../models/user');
+var db = require("../models");
 var mongoose = require ('mongoose');
 
 // landing page route
@@ -15,17 +15,22 @@ basicRoutes.get("/about", function(req, res) {
 
 // create and save sample user
 basicRoutes.get('/setup', function(req, res) {
-  var nick = new User({
+  var newUser = {
     username: 'Nick Cerminara',
     password: 'password',
     admin: true
-  });
+  };
 
-  nick.save(function(err) {
-    if (err) throw err;
-
-    console.log('User saved successfully');
-    res.json({ success: true });
+  db.User.create(newUser, function(err, savedUser){
+    if (err) {
+      console.log(err);
+    } else if (savedUser){
+      console.log("user has been saved");
+      res.json({ success: true });
+    }
+    else {
+      console.log("something else happend");
+    }
   });
 });
 
