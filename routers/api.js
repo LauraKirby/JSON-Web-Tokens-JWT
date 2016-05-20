@@ -1,3 +1,4 @@
+var dotenv = require("dotenv").load();
 var express = require('express');
 var db = require("../models");
 var bodyParser = require('body-parser');
@@ -8,7 +9,7 @@ var morgan = require('morgan');
 var apiRoutes = express.Router();
 
 var app = express();
-app.set('superSecret', process.env.SECRET);  // secret variable
+app.set('superSecret', process.env.SECRET || SECRET);  // secret variable
 
 // route to authenticate a user (POST http://localhost:3000/api/authenticate)
 apiRoutes.post('/authenticate', function(req, res) {
