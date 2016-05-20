@@ -9,7 +9,7 @@ var morgan = require('morgan');
 var apiRoutes = express.Router();
 
 var app = express();
-app.set('superSecret', process.env.SECRET || SECRET);  // secret variable
+app.set('superSecret', process.env.SECRET);  // secret variable
 
 // route to authenticate a user (POST http://localhost:3000/api/authenticate)
 apiRoutes.post('/authenticate', function(req, res) {
@@ -82,7 +82,7 @@ apiRoutes.use(function(req, res, next) {
 });
 
 apiRoutes.get('/', function(req, res) {
-  res.send('API root');
+  res.render('landing');
 });
 
 // route to return all users (GET http://localhost:3000/api/users)
