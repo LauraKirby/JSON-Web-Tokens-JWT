@@ -3,12 +3,10 @@ var basicRoutes = express.Router();
 var db = require("../models");
 var mongoose = require ('mongoose');
 
-// landing page route
 basicRoutes.get("/", function (req, res) {
   res.render("landing");
 });
 
-// "about" route
 basicRoutes.get("/about", function(req, res) {
   res.send("About insects");
 });
