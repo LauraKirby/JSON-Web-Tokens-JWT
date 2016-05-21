@@ -11,11 +11,11 @@ basicRoutes.get("/about", function(req, res) {
   res.send("About insects");
 });
 
-// create and save sample user
-basicRoutes.get('/setup', function(req, res) {
+// create and save user
+basicRoutes.post('/signup', function(req, res){
   var newUser = {
-    username: 'Laura Kirby',
-    password: 'password2',
+    username: req.body.username,
+    password: req.body.password,
     admin: true
   };
 
@@ -25,9 +25,8 @@ basicRoutes.get('/setup', function(req, res) {
     } else if (savedUser){
       console.log("user has been saved");
       res.json({ success: true });
-    }
-    else {
-      console.log("something else happend");
+    } else {
+      console.log("something else happened");
     }
   });
 });
