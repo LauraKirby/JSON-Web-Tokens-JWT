@@ -51,33 +51,22 @@ apiRoutes.post('/authenticate', function(req, res) {
 
 // route middleware to verify a token
 apiRoutes.use(function(req, res, next) {
-
-  // check header or url parameters or post parameters for token
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
-  // decode token
-  if (token) {
-
-    // verifies secret and checks exp
-    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+  var token = req.body.token || req.query.token || req.headers['x-access-token']; // check header or url parameters or post parameters for token
+  if (token) { // decode token
+    jwt.verify(token, app.get('superSecret'), function(err, decoded) { // verifies secret and checks exp
       if (err) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });
       } else {
-        // if everything is good, save to request for use in other routes
-        req.decoded = decoded;
+        req.decoded = decoded; // if everything is good, save to request for use in other routes
         next();
       }
     });
-
   } else {
-
-    // if there is no token
-    // return an error
+    // if no token, return an error
     return res.status(403).send({
         success: false,
         message: 'No token provided.'
     });
-
   }
 });
 
@@ -90,6 +79,15 @@ apiRoutes.get('/users', function(req, res) {
   db.User.find({}, function(err, users) {
     res.json(users);
   });
+});
+
+apiRoutes.get('/users/:user_id/search', function(req, res){
+  var category = req.query.category;
+
+});
+
+apiRoutes.get('/logout', function(req, res){
+
 });
 
 module.exports = apiRoutes;
